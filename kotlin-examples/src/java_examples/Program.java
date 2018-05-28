@@ -1,11 +1,19 @@
 package java_examples;
 
-import ex1.User;
+
+class User {
+    protected int age;
+}
 
 public class Program {
-    public static void foo() {}
+    public static void foo() {
+    }
 
     public static void main(String[] args) {
+        User user = new User();
+        user.age = 42;
+
+
         // System.out.println(foo());
 
 //        System.out.println("Hello, Java");
