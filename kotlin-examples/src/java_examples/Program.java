@@ -1,17 +1,22 @@
 package java_examples;
 
 
-class User {
-    protected int age;
+import ex5.User;
+
+public class Program {
+    public static void main(String[] args) {
+        User user = new User("Tom", "Suwon", 100, 200);
+    }
 }
 
+/*
 public class Program {
     public static void foo() {
     }
 
     public static void main(String[] args) {
         User user = new User();
-        user.age = 42;
+//        user.age = 42;
 
 
         // System.out.println(foo());
@@ -30,6 +35,7 @@ public class Program {
 
     }
 }
+*/
 
 
 
