@@ -1,11 +1,16 @@
 package java_examples;
 
 
-import ex5.User;
+// import ex5.User;
+
+import ex6.User;
 
 public class Program {
     public static void main(String[] args) {
-        User user = new User("Tom", "Suwon", 100, 200);
+        // User user = new User("Tom", "Suwon", 100, 200);
+//        User user = new User("Tom", 42);
+//        user.setAge(42);
+//        System.out.println(user.getAge());
     }
 }
 
