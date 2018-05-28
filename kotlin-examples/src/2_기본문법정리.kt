@@ -1,4 +1,3 @@
-
 // 2_기본 문법 정리
 package ex2;
 
@@ -76,12 +75,26 @@ fun main() {
 //    val n = 42
 //  2) 명시적 타입 지정
 //    val n: Long = 42
-class User {}
+class User {
+    fun foo() {}
+}
+
 fun main(args: Array<String>) {
     val n: Long = 42
 
     val n1 = 42
     val s1 = "Hello"
+
+    // val vs var
+    // : val을 사용하는 것이 좋습니다.
+
+    // Nullable: null을 가질 수 있는 타입
+    //   : String?, User?, Int?
+    val u1: User? = User()
+
+    if (u1 != null) {
+        u1.foo()
+    }
 }
 
 
