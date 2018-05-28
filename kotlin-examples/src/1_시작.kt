@@ -2,7 +2,6 @@
 package ex1
 
 import java_examples.Foo
-import java_examples.Program
 
 // 1) 코틀린 언어 특징
 //   : 모던 프로그래밍 언어
@@ -63,7 +62,7 @@ public final class HelloKt {
 // $ kotlinc-jvm -cp joda-time-2.9.9.jar
 
 
-
+// Kotlin = OOP + Functional
 
 
 
