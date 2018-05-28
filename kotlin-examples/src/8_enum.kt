@@ -1,4 +1,5 @@
 // 8_enum
+package ex8
 
 /*
 enum class Color {
@@ -97,6 +98,7 @@ fun getWarmth(color: Color) : String {
     }
 }
 
+// setOf -> Set<Color>
 // when 식의 인자로 상수 뿐 아니라 임의의 객체도 허용한다.
 fun mix(c1: Color, c2: Color): Color {
     return when (setOf(c1, c2)) {
@@ -105,7 +107,22 @@ fun mix(c1: Color, c2: Color): Color {
     }
 }
 
+data class User(val name: String, val age: Int)
+
+fun foo(user: User) : String {
+    return when (user) {
+        User("Tom", 42) -> "Tom is 42"
+        else -> "Unknown"
+    }
+}
+
 fun main(args: Array<String>) {
+
+    println(foo(User("Tom", 42)))
+    println(foo(User("Bob", 100)))
+
+
+
     val c1 = Color.RED
     val c2 = Color.YELLOW
 
