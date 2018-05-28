@@ -32,7 +32,6 @@ class Button : View, Serializable {
 //  2. Unchecked
 
 // Kotlin은 Unchecked 예외만 존재합니다.
-
 fun main(args: Array<String>) {
     val button = Button()
     val state = button.getCurrentState()
