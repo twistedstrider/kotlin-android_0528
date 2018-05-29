@@ -1,4 +1,4 @@
-package java_examples;
+package java_examples.ex2;
 
 
 // 생성자의 인자가 많을 경우, 빌더 패턴을 고려해라

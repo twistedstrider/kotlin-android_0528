@@ -1,6 +1,7 @@
 package java_examples;
 
 
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -34,6 +35,11 @@ public class Program {
         for (Integer e : list) {
             System.out.println(e);
         }
+
+
+        // User u = User.Companion.newFacebookUser(100);
+        // User u = User.Factory.newFacebookUser(100);
+
 
 
     }
