@@ -3,10 +3,21 @@ package java_examples;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Program {
     public static void main(String[] args) {
+
+        // Collection - List, Set, Map
+        //  => Collections: 컬렉션을 다루는 공통 메소드 집합
+        //  => Arrays: 배열을 다루는 공통 메소드 집합
+        //  => Objects: 객체에 대해서 동작하는 공통 메소드 집합
+        //    : 유틸리티 메소드 클래스
+
+        // Collections
+        // Arrays
+
         // User user = new User("Tom", "Suwon", 100, 200);
 //        User user = new User("Tom", 42);
 //        user.setAge(42);
