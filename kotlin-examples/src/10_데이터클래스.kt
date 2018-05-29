@@ -40,6 +40,9 @@ class User(val name: String, val age: Int) {
         return age
     }
 
+    operator fun component3(): String {
+        return "$name - $age"
+    }
 }
 
 
@@ -74,8 +77,8 @@ fun main(args: Array<String>) {
         println(e)
 
     // 4. 비구조화 선언
-    for ((name, age) in users) {
-        println("$name($age)")
+    for ((name, age, str) in users) {
+        println("$name($age): $str")
     }
 }
 
