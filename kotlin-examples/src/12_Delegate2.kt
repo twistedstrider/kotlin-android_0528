@@ -150,6 +150,7 @@ fun main(args: Array<String>) {
 //     "age" : 42
 //  }
 
+/*
 // JSON Object -> Kotlin(HashMap<String, Any>) -> Person
 class User(map: Map<String, Any>) {
     val name: String by map
@@ -169,6 +170,7 @@ class User(map: Map<String, Any>) {
 
 class Response(map: Map<String, Any>) {
     val user: User by map
+    val statusCode: Int by map
 
     override fun toString(): String {
         return "Response(user=$user)"
@@ -186,11 +188,52 @@ fun main(args: Array<String>) {
     println(user)
 
     val map2 = mapOf(
-            "user" to user
+            "user" to user,
+            "statusCode" to 200
     )
     val response = Response(map2)
     println(response)
 }
+*/
+// iOS
+//  HTTP Client  - AFNetworking(Obj C) -> Alamofire(Swift)
+//                 OKHttpClient(Java)  -> ?(Kotlin)
+
+
+// 4. vetoable
+//   : Validation의 조건에 부합되지 않으면 값이 변경되지 않습니다.
+class User {
+    var name by Delegates.vetoable("Gildong")
+    { _, _, new ->
+        new.length >= 5
+    }
+}
+
+fun main(args: Array<String>) {
+    val user = User()
+    user.name = "Tom22"
+
+    println(user.name)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
