@@ -19,9 +19,7 @@ fun add(a: Int, b: Int) = a + b
 
 fun sub(a: Int, b: Int) = a - b
 
-class User {
-    fun print() = println("User")
-}
+
 
 // 2. 함수의 타입
 //   : 함수의 시그니쳐에 의해서 결정됩니다.
@@ -45,13 +43,13 @@ fun foo(a: Int, b: Double, c: Char) = "foo($a, $b, $c)"
 
 //  => KFunctionN<P1, P2, P3 ... PN, R>
 //  KFunction 타입을 직접적으로 다루는 것은 더 이상 허용되지 않습니다.
-
+/*
 fun main(args: Array<String>) {
     // 3. 변수에 담을 수 있습니다.
     var fp = ::add
     fp = ::sub
 
-    var fp3 = ::foo
+    val fp3 = ::foo
     var fp2: (Int, Int) -> Int = ::add
 
     // 4. 변수를 통해 함수를 호출하는 것이 가능 합니다. - 간접 호출
@@ -62,10 +60,42 @@ fun main(args: Array<String>) {
     // println(fp3.invoke(10, 3.14, 'A'))
     println(fp3(10, 3.14, 'A'))
 }
+*/
 
+// 메소드: 객체와 연관되어 동작하는 함수
+//  => This Call
 
+class User(val name: String) {
 
+    // () -> Unit
+    // fun print(Unit this)
+    fun print() = println("User($name)")
+}
 
+fun main(args: Array<String>) {
+    // (User) -> Unit
+    val fp = User::print
+
+    val u1 = User("Tom")
+    val u2 = User("Bob")
+
+    // 메소드를 변수에 담아 호출할 때는 어떤 객체에 대해서 호출할지
+    // 반드시 지정해야 한다.
+    // fp(u1)
+    // fp(u2)
+
+    // () -> Unit
+    //  : 바운드 메소드 참조
+    //   어떤 객체에 대해서 메소드를 호출할지 미리 결정된 함수 참조
+    val fp2 = u1::print
+    val fp3 = u2::print
+
+    fp2()
+    fp3()
+
+    // print(u1)
+    // print(u2)
+}
 
 
 
