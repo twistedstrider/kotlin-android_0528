@@ -80,6 +80,15 @@ fun main(args: Array<String>) {
     for ((name, age, str) in users) {
         println("$name($age): $str")
     }
+
+    val map = mapOf(
+            "name" to "Tom",     // Pair<String, Any>
+            "age"  to 42
+    )
+
+    for ((k, v) in map) {
+        println("$k -> $v")
+    }
 }
 
 
