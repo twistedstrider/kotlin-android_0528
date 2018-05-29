@@ -141,8 +141,8 @@ fun main(args: Array<String>) {
 */
 
 
-// 3. KVC(Key-Value Coding)
-//    : 프로퍼티를 map을 통해서 초기화 하는 방법을 제공한다.
+// 3. 프로퍼티를 map을 통해서 초기화 하는 방법을 제공한다.
+//    KVC(Key-Value Coding)
 
 // JSON - Javascript Object Notation
 //  {
@@ -190,8 +190,6 @@ fun main(args: Array<String>) {
     )
     val response = Response(map2)
     println(response)
-
-
 }
 
 
