@@ -1,0 +1,66 @@
+package ex10
+
+/*
+class User(val name: String, val age: Int) {
+    // Ctrl + O
+    // toString
+    // 1. 객체를 문자열로 표현하는 기능입니다.
+    override fun toString(): String {
+        return "User(name=$name, age=$age)"
+    }
+
+    // 2. 객체 동등성: Any.equals / Any.hashCode
+    //  Ctrl + N
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as User
+
+        if (name != other.name) return false
+        if (age != other.age) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = name.hashCode()
+        result = 31 * result + age
+        return result
+    }
+}
+*/
+
+
+data class User(val name: String, val age: Int)
+
+fun main(args: Array<String>) {
+    val user = User("Tom", 42)
+    println(user)
+
+    val other = User("Tom", 42)
+    if (user == other) {
+        println("동일한 내용을 가지고 있습니다.")
+    }
+
+    // 객체를 복제하는 방법
+    //  Java: Object.clone
+
+    // 자동으로 복사 생성자를 만들어줍니다. = copy
+    //  : 1. Object.clone() 재정의할 때 고려해야하는 수많은 사항들을 직접 처리해줍니다.
+    //    2. Object.clone()은 필드값을 변경하는 것이 불가능하다.
+    //       copy()는 원하는 필드를 사용자 정의값으로 변경하는 것이 가능하다.
+    // val other2 = user.copy()
+    val other2 = user.copy(name = "Bob")
+
+
+}
+
+
+
+
+
+
+
+
+

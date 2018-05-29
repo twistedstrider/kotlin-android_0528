@@ -23,7 +23,6 @@ sealed class Expr {
     // 봉인된 클래스의 하위 클래스는 반드시 부모 클래스의 중첩 클래스로 만들어야 한다. - Kotlin 1.0
     // class Minus(val left: Expr, val right: Expr) : Expr()
 }
-
 // 같은 파일 내에서는 봉인된 클래스의 상속을 허용합니다. - Kotlin 1.1
 class Num(val value: Int) : Expr()
 class Sum(val left: Expr, val right: Expr) : Expr()
