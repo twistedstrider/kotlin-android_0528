@@ -205,7 +205,7 @@ fun main(args: Array<String>) {
 class User {
     var name by Delegates.vetoable("Gildong")
     { _, _, new ->
-        new.length >= 5
+        new.length >= 5 // true 면 값이 변경됩니다.
     }
 }
 
@@ -218,7 +218,8 @@ fun main(args: Array<String>) {
 
 
 
-
+//-------
+class VeryVeryLongClassName
 
 
 
