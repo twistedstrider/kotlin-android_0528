@@ -18,6 +18,7 @@ fun eval(e: Expr): Int {
 }
 */
 
+// Composite Pattern
 sealed class Expr {
     // 봉인된 클래스의 하위 클래스는 반드시 부모 클래스의 중첩 클래스로 만들어야 한다. - Kotlin 1.0
     // class Minus(val left: Expr, val right: Expr) : Expr()
@@ -34,9 +35,16 @@ fun eval(e: Expr): Int {
     }
 }
 
-
 fun main(args: Array<String>) {
+    val n1 = Num(10)
+    val n2 = Num(20)
+    val n3 = Num(30)
 
+    val s1 = Sum(n1, n2)   // 10 + 20
+    val s2 = Sum(s1, n3)   // (10 + 20) + 30
+    val s3 = Sum(s1, s2)   // 10 + 20 + 10 + 20 + 30
+
+    println(eval(s3))
 }
 
 
