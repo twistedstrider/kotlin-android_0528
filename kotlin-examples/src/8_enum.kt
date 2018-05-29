@@ -10,11 +10,33 @@ enum class Color {
 // 1. Kotlin의 enum은 프로퍼티나 메소드를 가질 수 있습니다.
 enum class Color(val r: Int, val g: Int, val b: Int) {
     // 프로퍼티
-    RED(255, 0, 0),
-    ORANGE(255, 165, 0),
-    YELLOW(255, 255, 0),
-    GREEN(0, 255, 0),
-    INDIGO(75, 0, 130);    // 메소드를 정의하기 위해서는 반드시 세미콜론을 제공해야 합니다.
+    RED(255, 0, 0) {
+        override fun getName2(): String {
+            return "Red"
+        }
+    },
+    ORANGE(255, 165, 0) {
+        override fun getName2(): String {
+            return "Orange"
+        }
+    },
+    YELLOW(255, 255, 0) {
+        override fun getName2(): String {
+            return "Yellow"
+        }
+    },
+    GREEN(0, 255, 0) {
+        override fun getName2(): String {
+            return "Green"
+        }
+    },
+    INDIGO(75, 0, 130) {
+        override fun getName2(): String {
+            return "Indigo"
+        }
+    };    // 메소드를 정의하기 위해서는 반드시 세미콜론을 제공해야 합니다.
+
+    abstract fun getName2(): String
 
     val rgb: Int
         get() {
@@ -90,7 +112,7 @@ fun getName(color: Color): String {
 }
 
 // 여러개의 값을 사용하는 when 예제
-fun getWarmth(color: Color) : String {
+fun getWarmth(color: Color): String {
     return when (color) {
         Color.RED, Color.ORANGE, Color.YELLOW -> "warm"
         Color.GREEN -> "neutral"
@@ -109,7 +131,7 @@ fun mix(c1: Color, c2: Color): Color {
 
 data class User(val name: String, val age: Int)
 
-fun foo(user: User) : String {
+fun foo(user: User): String {
     return when (user) {
         User("Tom", 42) -> "Tom is 42"
         else -> "Unknown"
@@ -120,7 +142,6 @@ fun main(args: Array<String>) {
 
     println(foo(User("Tom", 42)))
     println(foo(User("Bob", 100)))
-
 
 
     val c1 = Color.RED
