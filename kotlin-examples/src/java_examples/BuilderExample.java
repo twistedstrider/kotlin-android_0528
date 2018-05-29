@@ -52,7 +52,7 @@ class User {
 }
 
 
-public class Builder_examples {
+public class BuilderExample {
     public static void main(String[] args) {
         String a = "Tom";
         String b = "Suwon";

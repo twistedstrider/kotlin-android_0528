@@ -1,7 +1,7 @@
 // 1_시작.kt
 package ex1
 
-import java_examples.Builder_examples
+import java_examples.BuilderExample
 
 // 1) 코틀린 언어 특징
 //   : 모던 프로그래밍 언어
@@ -30,7 +30,7 @@ class User {}
 fun main(args: Array<String>) {
     println("Hello, Kotlin")
 
-    val foo = Builder_examples()  // Java Class
+    val foo = BuilderExample()  // Java Class
 }
 
 /*
