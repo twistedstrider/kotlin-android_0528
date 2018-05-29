@@ -1,6 +1,7 @@
 // 8_enum
 package ex8
 
+
 /*
 enum class Color {
     RED, ORANGE, YELLOW, GREEN, INDIGO
@@ -138,6 +139,12 @@ fun foo(user: User): String {
     }
 }
 
+/*
+class Minus : Expr() {
+
+}
+*/
+
 fun main(args: Array<String>) {
 
     println(foo(User("Tom", 42)))
@@ -146,6 +153,9 @@ fun main(args: Array<String>) {
 
     val c1 = Color.RED
     val c2 = Color.YELLOW
+
+    // Num(10)
+
 
     println(getName(c1))  // Red
     println(getName(c2))  // Orange
