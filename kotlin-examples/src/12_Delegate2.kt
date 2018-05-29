@@ -103,7 +103,8 @@ fun main(args: Array<String>) {
 }
 */
 
-// 2. Observation
+/*
+// 2. Observation - KVO
 //     : 프로퍼티 값의 변경을 알림을 받을 수 있는 방법
 
 // name: String   ->  nameTextView: TextView
@@ -137,10 +138,61 @@ fun main(args: Array<String>) {
     activity.name = "Bob"
 }
 
+*/
 
 
+// 3. KVC(Key-Value Coding)
+//    : 프로퍼티를 map을 통해서 초기화 하는 방법을 제공한다.
+
+// JSON - Javascript Object Notation
+//  {
+//     "name": "Tom",
+//     "age" : 42
+//  }
+
+// JSON Object -> Kotlin(HashMap<String, Any>) -> Person
+class User(map: Map<String, Any>) {
+    val name: String by map
+    val age: Int by map
+    val address: String by map
+
+    // 프로퍼티가 추가될 때마다 아래의 코드는 수정되어야 한다.
+    // init {
+    //    name = map["name"] as String
+    //    age = map["age"] as Int
+    // }
+
+    override fun toString(): String {
+        return "User(name=$name, age=$age, address=$address)"
+    }
+}
+
+class Response(map: Map<String, Any>) {
+    val user: User by map
+
+    override fun toString(): String {
+        return "Response(user=$user)"
+    }
+}
+
+fun main(args: Array<String>) {
+    val map1 = mapOf(
+            "name" to "Tom",
+            "age" to 42,
+            "address" to "Suwon"
+    )
+
+    val user = User(map1)
+    println(user)
+
+    val map2 = mapOf(
+            "user" to user
+    )
+    val response = Response(map2)
+    println(response)
 
 
+}
 
 
 
