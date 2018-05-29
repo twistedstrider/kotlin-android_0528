@@ -20,7 +20,6 @@ fun add(a: Int, b: Int) = a + b
 fun sub(a: Int, b: Int) = a - b
 
 
-
 // 2. 함수의 타입
 //   : 함수의 시그니쳐에 의해서 결정됩니다.
 //    - 함수의 시그니쳐: 인자의 타입, 개수, 반환 타입에 대한 정보가 동일하다면,
@@ -62,6 +61,7 @@ fun main(args: Array<String>) {
 }
 */
 
+/*
 // 메소드: 객체와 연관되어 동작하는 함수
 //  => This Call
 
@@ -96,9 +96,39 @@ fun main(args: Array<String>) {
     // print(u1)
     // print(u2)
 }
+*/
 
+// 5. 지역 함수를 만드는 것도 가능합니다.
+/*
+fun printArea(width: Int, height: Int) {
 
+    fun calculateArea(width: Int, height: Int) = width * height
 
+    val area = calculateArea(width, height)
+
+    println("The area is $area")
+}
+*/
+
+fun printArea(width: Int, height: Int) {
+    // 지역 함수는 스코프 바깥의 파라미터 변수나 변수에 접근하는 것이 가능합니다.
+    // => 클로져(Closure)
+    //   : 암묵적으로 외부의 변수를 전달(capture)받는 기술
+
+    var n = 2
+    fun calculateArea(): Int {
+        n = 1      // Ok!
+        // width = 100 // Error!
+        return width * height * n
+    }
+
+    val area = calculateArea()
+    println("The area is $area")
+}
+
+fun main(args: Array<String>) {
+    printArea(100, 30)
+}
 
 
 
