@@ -12,6 +12,9 @@ object Cursor {
         println("Cursor object created")
     }
 
+    // 프로퍼티나 메소드를 만드는 것도 가능합니다.
+    val name = "Cursor"
+
     fun move(x: Int, y: Int) {
         println("Move to ($x, $y)")
     }
@@ -24,8 +27,23 @@ object FileComparator : Comparator<File> {
     }
 }
 
+data class User(val name: String) {
+    object NameComperator : Comparator<User> {
+        override fun compare(o1: User, o2: User): Int {
+            return o1.name.compareTo(o2.name, ignoreCase = true)
+        }
+    }
+}
+
 fun main(args: Array<String>) {
     println("Program start")
+
+    val users = listOf(User("Tom"), User("BOB"), User("ALICE"))
+    val result2 = users.sortedWith(User.NameComperator)
+    println(result2)
+
+
+
 
     Cursor.move(10, 32)
 
