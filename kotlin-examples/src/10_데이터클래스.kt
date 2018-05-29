@@ -1,6 +1,6 @@
 package ex10
 
-/*
+
 class User(val name: String, val age: Int) {
     // Ctrl + O
     // toString
@@ -28,11 +28,23 @@ class User(val name: String, val age: Int) {
         result = 31 * result + age
         return result
     }
+
+    // 연산자 메소드 재정의 - 비구조화 선언
+    //  : 함수의 이름으로 어떤 연산인지 결정된다.
+    //  componentN
+    operator fun component1(): String {
+        return name
+    }
+
+    operator fun component2(): Int {
+        return age
+    }
+
 }
-*/
 
 
-data class User(val name: String, val age: Int)
+
+// data class User(val name: String, val age: Int)
 
 fun main(args: Array<String>) {
     val user = User("Tom", 42)
@@ -46,14 +58,25 @@ fun main(args: Array<String>) {
     // 객체를 복제하는 방법
     //  Java: Object.clone
 
-    // 자동으로 복사 생성자를 만들어줍니다. = copy
+    // 3. 자동으로 복사 기능을 만들어줍니다. = copy
     //  : 1. Object.clone() 재정의할 때 고려해야하는 수많은 사항들을 직접 처리해줍니다.
     //    2. Object.clone()은 필드값을 변경하는 것이 불가능하다.
     //       copy()는 원하는 필드를 사용자 정의값으로 변경하는 것이 가능하다.
     // val other2 = user.copy()
-    val other2 = user.copy(name = "Bob")
+    // val other2 = user.copy(name = "Bob")
 
+    // List<User>
+    val users = listOf(User("Tom", 42),
+            User("Bob", 30),
+            User("Alice", 15))
 
+    for (e in users)
+        println(e)
+
+    // 4. 비구조화 선언
+    for ((name, age) in users) {
+        println("$name($age)")
+    }
 }
 
 

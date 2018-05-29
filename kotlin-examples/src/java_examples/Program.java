@@ -1,9 +1,9 @@
 package java_examples;
 
 
-// import ex5.User;
-
-import ex6.User;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Program {
     public static void main(String[] args) {
@@ -11,6 +11,20 @@ public class Program {
 //        User user = new User("Tom", 42);
 //        user.setAge(42);
 //        System.out.println(user.getAge());
+
+
+//        List<Integer> list = new ArrayList<>();
+//        list.add(10);
+//        list.add(20);
+//        list.add(30);
+
+        List<Integer> list = Arrays.asList(10, 20, 30);
+
+        for (Integer e : list) {
+            System.out.println(e);
+        }
+
+
     }
 }
 
