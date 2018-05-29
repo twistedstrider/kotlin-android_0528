@@ -2,6 +2,9 @@ package java_examples;
 
 
 
+import ex11_3.MouseAdapter;
+import ex11_3.Window;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -39,6 +42,19 @@ public class Program {
 
         // User u = User.Companion.newFacebookUser(100);
         // User u = User.Factory.newFacebookUser(100);
+
+        Window window = new Window();
+        window.setMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked() {
+
+            }
+
+            @Override
+            public void mouseEntered() {
+
+            }
+        });
 
 
 

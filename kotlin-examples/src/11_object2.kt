@@ -149,6 +149,7 @@ fun <T> loadFromMap(factory: MapFactory<T>): T {
 
 fun main(args: Array<String>) {
     val person = loadFromMap(Person)
+    // val person = loadFromMap(Person.Companion)
     println(person)
 }
 
