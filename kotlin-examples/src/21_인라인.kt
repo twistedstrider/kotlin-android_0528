@@ -1,4 +1,3 @@
-
 package ex21
 
 import java.util.concurrent.locks.Lock
@@ -43,8 +42,6 @@ fun main(args: Array<String>) {
 */
 
 
-
-
 // 문제점: action()에서 예외가 발생할 경우, unlock이 호출되지 않는 문제가 있다.
 //     => 데드락의 위험이 있다.
 /*
@@ -69,6 +66,7 @@ fun <T> withLock(lock: Lock, action: () -> T): T {
 //      Java 8: JVM - Lambda O
 //      : 오직 한개의 객체를 생성해서 호출한다.
 
+// Kotlin sychronized 함수의 구현 원리
 inline fun <T> withLock(lock: Lock, action: () -> T): T {
     lock.lock()
     try {
@@ -79,7 +77,7 @@ inline fun <T> withLock(lock: Lock, action: () -> T): T {
 }
 
 
-class IncThread(private val lock: Lock): Thread() {
+class IncThread(private val lock: Lock) : Thread() {
     companion object {
         var n = 0
     }
