@@ -12,6 +12,8 @@ import java.util.List;
 
 public class Program {
     public static void main(String[] args) {
+        int n;
+        System.out.println(n = 42);
 
         // Collection - List, Set, Map
         //  => Collections: 컬렉션을 다루는 공통 메소드 집합
