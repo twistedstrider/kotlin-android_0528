@@ -65,6 +65,7 @@ fun <T> withLock(lock: Lock, action: () -> T): T {
 
 //      Java 8: JVM - Lambda O
 //      : 오직 한개의 객체를 생성해서 호출한다.
+//     => Closure: 람다의 컨텍스트에서 외부의 변수를 암묵적으로 참조하는 것
 
 // Kotlin sychronized 함수의 구현 원리
 inline fun <T> withLock(lock: Lock, action: () -> T): T {
@@ -91,6 +92,7 @@ class IncThread(private val lock: Lock) : Thread() {
     }
 }
 
+
 fun main(args: Array<String>) {
     val lock = ReentrantLock()
 
@@ -105,5 +107,6 @@ fun main(args: Array<String>) {
 
     println(IncThread.n)
 }
+
 
 

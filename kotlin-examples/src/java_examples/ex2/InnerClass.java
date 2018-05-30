@@ -1,4 +1,4 @@
-package java_examples;
+package java_examples.ex2;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
