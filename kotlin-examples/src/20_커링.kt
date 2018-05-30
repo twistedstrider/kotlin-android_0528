@@ -29,17 +29,27 @@ package ex20
 //    }
 //}
 
-// 인자가 2개인 함수에 대해서 커링 함수를 생성하는 고차 함수
 
 // (P1, P2) -> R
 
 fun sum(a: Int, b: Int): Int = a + b
 
+// 인자가 2개인 함수에 대해서 커링 함수를 생성하는 고차 함수
 fun <P1, P2, R> ((P1, P2) -> R).curried(): (P1) -> (P2) -> R = { p1 ->
     { p2 ->
         this(p1, p2)
     }
 }
+
+fun <P1, P2, P3, R> ((P1, P2, P3) -> R).curried(): (P1) -> (P2) -> (P3) -> R = { p1 ->
+    { p2 ->
+        { p3 ->
+            this(p1, p2, p3)
+        }
+    }
+
+}
+
 
 fun main(args: Array<String>) {
     // val s = sum(10)(20)(30)
