@@ -55,7 +55,7 @@ class Activity {
         //     => 람다 표현식을 허용한다.
 
         // SAM(Single Abstract Method) Interface -> 람다 허용
-        //  : 자바의 함수형 인터페이스를 코틀린에서 람다 표현식을 통해 사용할 수 있게 해주는 문법
+        //  : '자바의 함수형 인터페이스'를 코틀린에서 람다 표현식을 통해 사용할 수 있게 해주는 문법
         button1.listener = OnClickListener {
             println("Button1 clicked")
         }
