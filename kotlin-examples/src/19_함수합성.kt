@@ -24,13 +24,14 @@ fun compose(f: (String) -> Int, g: (Any) -> Int): (String) -> Int = { x ->
     g(f(x))
 }
 
-
 fun main(args: Array<String>) {
     val f: (String) -> Int = String::length
     val g: (Any) -> Int = Any::hashCode
 
-    val fog = compose(f, g)
+    // val fog = compose(f, g)
     //  : 문자열의 길이를 통해 해시 코드를 구하는 함수가 합성됩니다.
+
+    val fog = f.compose(g)
 
     val s1 = "Tom"
     val s2 = "Bob"
