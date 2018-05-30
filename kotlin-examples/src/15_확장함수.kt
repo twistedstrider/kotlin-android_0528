@@ -22,20 +22,96 @@
 //   Anko(Jetbrains) - Android DSL
 package ex15
 
+/*
 // fun lastChar(text: String) = text.get(text.length - 1)
 // fun lastChar(text: String) = text[text.length - 1]
+//  -> lastChar(s)
 
 // String: 수신 객체 타입
 // this:   수신 객체 참조
 fun String.lastChar(/* text: String */) = this[length - 1]
+//  -> s.lastChar()
+// * 외부의 함수이다. 클래스가 공개하고 있는 프로퍼티에만 접근이 가능하다.
+//   protected / private 에 대해서는 접근이 불가능하다.
 
 fun main(args: Array<String>) {
     val s = "Tom"
 
     // lastChar(s) // (String) -> Char
     val result = s.lastChar()
+
+
     println(result)
 }
+*/
+
+// 아래의 함수는 Collection의 모든 원소를 하나의 문자열로 변경하는 함수
+// template <typename T>
+/*
+fun <T> joinToString(collection: Collection<T>,
+                     sperator: String = ", ",
+                     prefix: String = "",
+                     postfix: String = ""): String {
+
+    val result = StringBuilder(prefix)
+
+    for ((index, element) in collection.withIndex()) {
+        if (index > 0)
+            result.append(sperator)
+        result.append(element)
+    }
+
+    result.append(postfix)
+    return result.toString()
+}
+
+fun main(args: Array<String>) {
+    val list = listOf(1, 2, 3, 4)
+    // val result = joinToString(list, sperator = ", ", prefix = "[ ", postfix = " ]")
+    val result = joinToString(list, sperator = "-")
+
+    println(result)
+}
+*/
+
+
+// Collection<T>에 해당 joinToString을 확장해보세요.
+fun <T> joinToString(collection: Collection<T>,
+                     sperator: String = ", ",
+                     prefix: String = "",
+                     postfix: String = ""): String {
+
+    val result = StringBuilder(prefix)
+
+    for ((index, element) in collection.withIndex()) {
+        if (index > 0)
+            result.append(sperator)
+        result.append(element)
+    }
+
+    result.append(postfix)
+    return result.toString()
+}
+
+fun main(args: Array<String>) {
+    val list = listOf(1, 2, 3, 4)
+    // val result = joinToString(list, sperator = ", ", prefix = "[ ", postfix = " ]")
+    val result = joinToString(list, sperator = "-")
+
+    println(result)
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

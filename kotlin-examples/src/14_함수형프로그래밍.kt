@@ -1,4 +1,4 @@
-import ex15.lastChar
+// import ex15.lastChar
 
 // 14_함수형 프로그래밍
 //   : 함수를 일급 시민(first-class citizens)으로 취급한다.
@@ -131,7 +131,7 @@ fun printArea(width: Int, height: Int) {
 fun main(args: Array<String>) {
     printArea(100, 30)
 
-    println("hello".lastChar())
+    // println("hello".lastChar())
 }
 
 
