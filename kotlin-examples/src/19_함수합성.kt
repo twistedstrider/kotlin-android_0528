@@ -20,8 +20,14 @@ fun compose(f: (String) -> Int, g: (Any) -> Int): (String) -> Int = { x ->
 }
 */
 
+/*
 fun compose(f: (String) -> Int, g: (Any) -> Int): (String) -> Int = { x ->
     g(f(x))
+}
+*/
+
+fun ((String) -> Int).compose(g: (Any) -> Int): (String) -> Int = { x ->
+    g(this(x))
 }
 
 fun main(args: Array<String>) {
