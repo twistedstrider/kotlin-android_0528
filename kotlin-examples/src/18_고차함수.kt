@@ -92,8 +92,14 @@ fun main(args: Array<String>) {
 
     println("evens: $evens")
     println("odds: $odds")
-}
 
+    // 무명 객체를 생성해서 전달하는 방법
+    val result = filter(list, object : Predicate {
+        override fun test(e: Int) = e >= 5
+    })
+
+    println("result: $result")
+}
 
 
 
