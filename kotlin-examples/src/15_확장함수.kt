@@ -76,14 +76,35 @@ fun main(args: Array<String>) {
 
 
 // Collection<T>에 해당 joinToString을 확장해보세요.
-fun <T> joinToString(collection: Collection<T>,
+/*
+fun <T> Collection<T>.joinToString(/*collection: Collection<T>,*/
                      sperator: String = ", ",
                      prefix: String = "",
                      postfix: String = ""): String {
 
     val result = StringBuilder(prefix)
 
-    for ((index, element) in collection.withIndex()) {
+    for ((index, element) in withIndex()) {
+        if (index > 0)
+            result.append(sperator)
+        result.append(element)
+    }
+
+    result.append(postfix)
+    return result.toString()
+}
+*/
+
+// 특정한 제네릭 타입(Collection<Int>)에 대해서만 동작하도록 하고 싶다.
+//   : C++ 부분 전문화와 비슷한 기능
+fun Collection<Int>.joinToString(/*collection: Collection<T>,*/
+        sperator: String = ", ",
+        prefix: String = "",
+        postfix: String = ""): String {
+
+    val result = StringBuilder(prefix)
+
+    for ((index, element) in withIndex()) {
         if (index > 0)
             result.append(sperator)
         result.append(element)
@@ -93,10 +114,13 @@ fun <T> joinToString(collection: Collection<T>,
     return result.toString()
 }
 
+
+
 fun main(args: Array<String>) {
     val list = listOf(1, 2, 3, 4)
     // val result = joinToString(list, sperator = ", ", prefix = "[ ", postfix = " ]")
-    val result = joinToString(list, sperator = "-")
+    // val result = joinToString(list, sperator = "-")
+    val result = list.joinToString(sperator = "-")
 
     println(result)
 }
