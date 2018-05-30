@@ -14,7 +14,6 @@ import java.time.LocalDateTime
 // 일반 함수
 
 
-
 // * 2개 커링 함수
 //fun sum(a: Int): (Int) -> Int = { b ->
 //    a + b
