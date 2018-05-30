@@ -77,10 +77,11 @@ fun main(args: Array<String>) {
     result = filter(list) { it >= 5 }
 
 
+    // Kotlin에서는 정책을 받는 함수를 만들때 반드시 마지막 인자를 정책인자로 사용합니다.
+    // * Kotlin 표준 라이브러리
+    result = list.filter { it >= 5 }
 
-
-
-
+    
     println("result: $result")
 }
 
