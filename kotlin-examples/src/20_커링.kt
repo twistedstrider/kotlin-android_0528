@@ -1,6 +1,6 @@
 package ex20
 
-import java.time.LocalDate
+import java.time.LocalDateTime
 
 // 커링(Currying)
 //  : 다중 인수를 갖는 함수를 단일 인수를 함수들의 함수열로 바꾸는 것을 의미한다.
@@ -79,7 +79,7 @@ fun compute(logger: (String) -> Unit) {
 
 enum class Level { INFO, WARN, ERROR, CRITICAL }
 fun log(level: Level, appendable: Appendable, message: String) {
-    appendable.appendln("[${level.name}]:[${LocalDate.now()}]: $message")
+    appendable.appendln("[${level.name}]:[${LocalDateTime.now()}]: $message")
 }
 
 //--------------------------------------
@@ -94,7 +94,7 @@ fun main(args: Array<String>) {
         log(Level.INFO, System.out, message)
     }
 
-    // 2. 부분 적용
+    // 2. 부분 적용: C++: bind
     val logger = ::log.curried()(Level.INFO)(System.out)
     compute(logger)
     // logger("computing...")
