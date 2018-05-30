@@ -54,6 +54,7 @@ fun modulo(k: Int, r: Int) : (Int) -> Boolean = { value ->
 fun main(args: Array<String>) {
     val list = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
+    // 동적으로 함수를 생성하는 것이 가능하다.
     val isEven = modulo(2, 0)  // e % 2 == 0
     val isOdd = modulo(2, 1)   // e % 2 == 1
 
