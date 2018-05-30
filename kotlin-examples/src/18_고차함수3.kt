@@ -1,15 +1,18 @@
 package ex18_3
 
+import java_examples.OnClickListener
+
 // 자바에서 Event를 처리하는 설계는 인터페이스 기반으로 되어 있습니다.
-interface OnClickListener {
-    fun onClick(view: Button)
-}
+//interface OnClickListener {
+//    fun onClick(view: Button)
+//}
 
 class Button {
     var listener: OnClickListener? = null
 
     fun click() {
-        listener?.onClick(this)
+        // listener?.onClick(this)
+        listener?.onClick()
     }
 }
 
@@ -52,21 +55,23 @@ class Activity {
         //     => 람다 표현식을 허용한다.
 
         // SAM(Single Abstract Method) Interface -> 람다 허용
-
+        //  : 자바의 함수형 인터페이스를 코틀린에서 람다 표현식을 통해 사용할 수 있게 해주는 문법
+        button1.listener = OnClickListener {
+            println("Button1 clicked")
+        }
 
         // 익명 객체
         button1.listener = object : OnClickListener {
-            override fun onClick(view: Button) {
+            override fun onClick() {
                 println("Button1 clicked")
             }
         }
 
         button2.listener = object : OnClickListener {
-            override fun onClick(view: Button) {
+            override fun onClick() {
                 println("Button2 clicked")
             }
         }
-
 
 
         button1.click()
