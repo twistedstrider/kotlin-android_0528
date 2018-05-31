@@ -2,6 +2,11 @@ package java_examples;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 // Functional Interface = Single Abstract Method(SAM)
 @FunctionalInterface
 interface OnClickListener {
@@ -80,10 +85,31 @@ public class LambdaExample {
     }
 
 
+    /*
     public static void main(String[] args) {
 
         MainActivity activity = new MainActivity();
         activity.create();
+    }
+    */
+
+    public static void main(String[] args) {
+
+        /*
+        List<Integer> result = Arrays.asList(10, 87, 97, 43, 121, 20)
+                .stream()
+                .map(e -> e * 2)
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
+        */
+        List<Integer> result = Arrays.asList(10, 87, 97, 43, 121, 20)
+                .parallelStream()
+                .map(e -> e * 2)
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
+
     }
 }
 

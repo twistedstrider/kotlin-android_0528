@@ -175,15 +175,16 @@ fun main(args: Array<String>) {
 
 //   Sequence(Kotlin) => Java 7 까지
 //   Stream           => Kotlin을 사용하고 있다고 하더라도, Stream을 사용하는 것이 좋을 때가
-//                       있습니다.
-
+//                       있습니다.(parallelStream을 이용하기 위해서)
 fun main(args: Array<String>) {
     val result = listOf(10, 87, 97, 43, 121, 20)
             .asSequence()
+            .flatMap { e -> (0..e).asSequence() }
             .map { it * 2 }
             .distinct()                 // 중복된 값을 제거한다. (unique)
             .sorted()
             .sum()
+    // Sequence 반환 타입이 아니면, 연산이 수행됩니다.
 
     println("result: $result")  // 이때 계산됩니다.
 
