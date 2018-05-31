@@ -18,10 +18,14 @@ import android.os.Bundle;
 // implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.41'
 
 // 4. java 코드와 kotlin 코드를 별도의 디렉토리로 분리해서 사용하는 것이 좋다.
+/*
+  sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+  }
+*/
 
 
-
-
+/*
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -30,3 +34,4 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 }
+*/
