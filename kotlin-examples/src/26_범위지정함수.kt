@@ -1,5 +1,8 @@
 package ex26
 
+import java.io.DataOutputStream
+import java.io.FileOutputStream
+
 // 범위 지정 함수
 //   1. let
 fun sendEmail(to: String): Boolean {
@@ -58,7 +61,7 @@ fun main(args: Array<String>) {
 
 //   2. with
 //   3. apply
-
+/*
 fun alphabet(): String {
     val result = StringBuilder()
     for (letter in 'A'..'Z')
@@ -68,20 +71,19 @@ fun alphabet(): String {
     return result.toString()
 }
 
-
-fun alphabet_with1() : String {
+// 수신 객체 지정 람다 - with
+//  : with 표현식의 결과값은 람다 블록의 결과 입니다.
+fun alphabet_with1(): String {
     val result = StringBuilder()
 
-    // 수신 객체 지정 람다
-    // with의 결과는 람다 블록의 결과 입니다.
-    return with (result) {
+
+    return with(result) {
         for (letter in 'A'..'Z')
             append(letter)
         append("\n")
         toString()
     }
 }
-
 
 fun alphabet_with2() = with(StringBuilder()) {
     for (letter in 'A'..'Z')
@@ -90,15 +92,73 @@ fun alphabet_with2() = with(StringBuilder()) {
     toString()
 }
 
+// 수신 객체 지정 람다 - apply
+//   apply 표현식의 결과는 무조건 수신 객체 입니다.
+fun alphabet_apply1(): String {
+    return StringBuilder().apply {
+        for (letter in 'A'..'Z')
+            append(letter)
+        append("\n")
+    }.toString()
+}
+
+fun alphabet_apply2() = StringBuilder().apply {
+    for (letter in 'A'..'Z')
+        append(letter)
+    append("\n")
+}.toString()
+
+fun alphabet_apply3() = buildString {
+    for (letter in 'A'..'Z')
+        append(letter)
+    append("\n")
+}
+
+class MyThread : Thread()
 
 fun main(args: Array<String>) {
     println(alphabet())
     println(alphabet_with1())
     println(alphabet_with2())
+
+    println(alphabet_apply1())
+    println(alphabet_apply2())
+    println(alphabet_apply3())
+
+    /*
+    val thread = MyThread().apply {
+        isDaemon = true
+    }
+    */
 }
+*/
 
+//  Java의 메모리 자원은 JVM이 관리합니다.
+//  Java에서 사용하는 비 메모리 자원은 명시적인 종료 메소드 호출을 해야 합니다.
+//    : Try with Resource - Java 7
 
+//  finalize: JVM이 객체를 파괴할 때 호출되는 함수
+//    'finalize에서 close()를 처리하면 안돼는 이유'
+//    1) finalize 호출 시점이 명확하지 않다.
+//    2) finalize 호출을 보장하지 않는다.
 
+//  비 메모리 자원
+//    : File, Thread, Mutex => 운영체제 서비스
+
+fun main(args: Array<String>) {
+    val fos = FileOutputStream("a.txt")
+    val dos = DataOutputStream(fos)
+
+    // Try with Resources
+    fos.use {
+        dos.use {
+            dos.writeChar('A'.toInt())
+        }
+    }
+
+    // fos.close()
+    // dos.close()
+}
 
 
 
