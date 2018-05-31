@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test
 
 // import org.junit.jupiter.api.Test
 
+
 /*
 fun fib(k: Int): Long = when (k) {
     0 -> 1
@@ -12,6 +13,7 @@ fun fib(k: Int): Long = when (k) {
     else -> fib(k - 1) + fib(k - 2)
 }
 */
+
 
 // 메모이제이션: 중복된 계산을 캐시하는 방법
 //     => 순수 함수(pure function)
@@ -74,46 +76,35 @@ fun fib(k: Int): Long {
         else -> fib(k - 1) + fib(k - 2)
     }
 }
+*/
 
-fun <A, R> memoized(fn: (A) -> R): (A) -> R {
-    val cache = mutableMapOf<A, R>()
-    return { k ->
-        cache.getOrPut(k) {
-            fn(k)
-        }
+val cache = mutableMapOf<Int, Long>()
+fun fib(k: Int): Long = cache.getOrPut(k) {
+    when (k) {
+        0 -> 1
+        1 -> 1
+        else -> fib(k - 1) + fib(k - 2)
     }
 }
-
-//fun <A, R> ((A) -> R).memoized(): (A) -> R {
-//    val cache = mutableMapOf<A, R>()
-//    return { k ->
-//        cache.getOrPut(k) {
-//            this(k)
-//        }
-//    }
-//}
-
 
 class FibTest {
     @Test
     fun fib10() {
-        // ::fib.memoized()(10)
-        val f = memoized(::fib)
-        println(f(50))
+        fib(10)
     }
 
-//    @Test
-//    fun fib30() {
-//        ::fib.memoized()(30)
-//    }
-//
-//    @Test
-//    fun fib50() {
-//        ::fib.memoized()(50)
-//    }
-}
-*/
+    @Test
+    fun fib30() {
+        fib(30)
+    }
 
+    @Test
+    fun fib50() {
+        fib(50)
+    }
+}
+
+// 아래 기능은 재귀에 사용할 수 없습니다.
 fun <A, R> ((A) -> R).memoized(): (A) -> R {
     val cache = mutableMapOf<A, R>()
     return { k ->
