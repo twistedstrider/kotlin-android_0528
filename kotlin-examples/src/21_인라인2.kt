@@ -42,6 +42,51 @@ fun main(args: Array<String>) {
 }
 */
 
+open class Context {
+
+    // 기존 안드로이드 프레임워크가 사용하던 방법
+    //  => 프레임워크가 다음 액티비티를 생성해야 하는데,
+    //     객체를 동적으로 생성하기 위해서 제네릭 인자를 활용하는 것이 불가능하다.
+    fun startActivity(context: Context, clazz: Class<out Activity>) {
+        val newActivity = clazz.newInstance()
+        newActivity.create()
+    }
+}
+
+open class Activity : Context() {
+    open fun onCreate() {
+        println("${this.javaClass.simpleName} onCreate()")
+    }
+
+    fun create() {
+        onCreate()
+    }
+}
+
+class MainActivity : Activity() {
+    override fun onCreate() {
+        super.onCreate()
+
+        // startActivity(this, DetailActivity::class.java)
+        startActivity<DetailActivity>()
+    }
+}
+
+class DetailActivity : Activity()
+
+// Anko
+inline fun <reified T: Activity> Context.startActivity() {
+    startActivity(this, T::class.java)
+}
+
+fun main(args: Array<String>) {
+    val mainActivity = MainActivity()
+    mainActivity.create()
+}
+
+
+
+
 
 
 
