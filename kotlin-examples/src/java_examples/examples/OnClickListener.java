@@ -1,4 +1,4 @@
-package java_examples.ex2;
+package java_examples.examples;
 
 public interface OnClickListener {
     void onClick();

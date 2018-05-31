@@ -1,5 +1,7 @@
 package java_examples;
 
+import org.jetbrains.annotations.NotNull;
+
 // Functional Interface = Single Abstract Method(SAM)
 @FunctionalInterface
 interface OnClickListener {
@@ -70,7 +72,16 @@ class MainActivity {
 }
 
 public class LambdaExample {
+    // @NotNull: Kotlin에서 Nullable이 아닌 타입으로 인식하게 해준다.
+    public static void foo(@NotNull String name) {
+        // System.out.println("hello, " + name);
+
+        // ko.HelloKt.hoo
+    }
+
+
     public static void main(String[] args) {
+
         MainActivity activity = new MainActivity();
         activity.create();
     }

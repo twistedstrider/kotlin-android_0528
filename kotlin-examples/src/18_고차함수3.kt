@@ -1,6 +1,6 @@
 package ex18_3
 
-import java_examples.ex2.OnClickListener
+import java_examples.examples.OnClickListener
 
 // 자바에서 Event를 처리하는 설계는 인터페이스 기반으로 되어 있습니다.
 //interface OnClickListener {
