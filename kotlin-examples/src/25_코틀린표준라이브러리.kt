@@ -118,6 +118,11 @@ fun main(args: Array<String>) {
 }
 */
 
+/*
+// C# => LINQ(Language-Integrated Query)
+//    => 에릭 마이어
+//    => Rx(Reactive Extension)
+
 // groupBy
 fun main(args: Array<String>) {
     val cities = listOf("Seoul", "Busan", "Daegu", "Suwon")
@@ -125,33 +130,73 @@ fun main(args: Array<String>) {
     // List<String> => groupBy =>  Map<K, List<String>>
     //               (String) -> K
     //                   'S'       Map<Char, List<String>>
-    val result = cities.groupBy { city -> city.first() }
+
+    /*
+    val result = cities
+            .groupBy { city -> city.first() }
+            .toSortedMap()
     //  Map<Char, List<String>>
 
-    // Map
-    val keys = result.keys.sorted()
-    for (k in keys) {
-        println("$k -> ${result[k]}")
-    }
 
-    for ((k, v) in result) {
-        println("$k -> $v")
-    }
+    result.forEach { k, v -> println("$k -> $v") }
 
+    // for ((k, v) in result) {
+    //    println("$k -> $v")
+    // }
 
+    */
 
-
+    cities.groupBy { city -> city.first() }
+            .toSortedMap()
+            .forEach { k, v -> println("$k -> $v") }
 }
+*/
+
+/*
+// zip: 두 컬렉션 내의 자료들을 조합하여 새로운 자료를 만듭니다.
+fun main(args: Array<String>) {
+    val countries = listOf("Korea", "United States", "China", "Japan")
+    val codes = listOf("KR", "US", "CN", "JP")
+
+    // countries.zip(codes).forEach { println(it) }
+
+    countries.zip(codes) { country, code ->
+        "$country($code)"
+    }.forEach(::println)
+}
+*/
+
+// Kotlin의 아래의 각 연산은 임시적으로 컬렉션을 생성합니다.
+//  => 즉시 처리되지만, 데이터의 개수가 많을 수록 성능이 떨어지는 문제가 있습니다.
+
+//  해결방법
+//  => 데이터의 개수가 많을 경우,
+//     지연된 계산을 사용하는 것이 효과적입니다.
+
+//   Sequence(Kotlin) => Java 7 까지
+//   Stream           => Kotlin을 사용하고 있다고 하더라도, Stream을 사용하는 것이 좋을 때가
+//                       있습니다.
+
+fun main(args: Array<String>) {
+    val result = listOf(10, 87, 97, 43, 121, 20)
+            .asSequence()
+            .map { it * 2 }
+            .distinct()                 // 중복된 값을 제거한다. (unique)
+            .sorted()
+            .sum()
+
+    println("result: $result")  // 이때 계산됩니다.
 
 
+    /*
+    val result = listOf(10, 87, 97, 43, 121, 20)
+            .flatMap { e -> 0..e }
+            .distinct()                 // 중복된 값을 제거한다. (unique)
+            .sorted()
 
-
-
-
-
-
-
-
+    println("result: $result")
+    */
+}
 
 
 
