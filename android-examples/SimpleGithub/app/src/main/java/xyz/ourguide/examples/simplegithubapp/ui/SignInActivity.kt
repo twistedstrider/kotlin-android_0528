@@ -10,6 +10,10 @@ import xyz.ourguide.examples.simplegithubapp.R
 //    => OAuth2
 
 //   2. Github OAuth2 Login
+//   3. Github OAuth App 추가
+//         GITHUB_CLIENT_ID
+//         GITHUB_CLIENT_SECRET
+//      app - gradle.properties
 
 
 
