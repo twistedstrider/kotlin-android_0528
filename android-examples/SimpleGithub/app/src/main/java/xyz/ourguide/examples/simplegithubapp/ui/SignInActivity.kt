@@ -1,5 +1,6 @@
 package xyz.ourguide.examples.simplegithubapp.ui
 
+import android.content.Intent
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -49,4 +50,26 @@ class SignInActivity : AppCompatActivity() {
         }
 
     }
+
+    // redirect Intent에서 code를 얻어올 수 있다. - launchMode: singleTask
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+
+
+        toast("onNewIntent")
+
+
+    }
+
+
 }
+
+
+
+
+
+
+
+
+
+
