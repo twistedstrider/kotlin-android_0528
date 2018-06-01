@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.customtabs.CustomTabsIntent
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import org.jetbrains.anko.toast
@@ -87,9 +88,12 @@ class SignInActivity : AppCompatActivity() {
                     clientSecret = BuildConfig.GITHUB_CLIENT_SECRET,
                     code = code)
 
+            showProgress()
+            /*
             call?.enqueue(object : Callback<GithubAccessToken> {
                 override fun onResponse(call: Call<GithubAccessToken>,
                                         response: Response<GithubAccessToken>) {
+                    hideProgress()
 
                     val token = response.body()
                     if (response.isSuccessful && token != null) {
@@ -97,23 +101,47 @@ class SignInActivity : AppCompatActivity() {
                         Toast.makeText(this@SignInActivity, "token: ${token.accessToken}", Toast.LENGTH_SHORT).show()
 
                     } else {
-                        // showError("Request failed: ${response.message}")
+                        showError("Request failed: ${response.message()}")
                     }
 
                 }
 
                 override fun onFailure(call: Call<GithubAccessToken>,
                                        t: Throwable) {
-                    // showError(t.message)
+                    hideProgress()
+
+                    showError(t.message)
                 }
             })
+            */
         }
+    }
+
+    private fun showError(message: String?) {
+        toast("error: $message")
+    }
+
+    private fun showProgress() {
+        btnActivitySignInStart.visibility = View.GONE
+        pbActivitySignIn.visibility = View.VISIBLE
+    }
+
+    private fun hideProgress() {
+        btnActivitySignInStart.visibility = View.VISIBLE
+        pbActivitySignIn.visibility = View.GONE
     }
 
 
 }
 
+fun <T> Call<T>.enqueue(success: (response: Response<T>) -> Unit,
+                        failure: (t: Throwable) -> Unit) {
 
+    enqueue(object : Callback<T> {
+        override fun onResponse(call: Call<T>?, response: Response<T>) = success(response)
+        override fun onFailure(call: Call<T>?, t: Throwable) = failure(t)
+    })
+}
 
 
 
