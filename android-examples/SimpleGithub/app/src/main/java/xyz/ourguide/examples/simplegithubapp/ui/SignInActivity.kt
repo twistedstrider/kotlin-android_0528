@@ -5,10 +5,17 @@ import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.customtabs.CustomTabsIntent
+import android.util.Log
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import org.jetbrains.anko.toast
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import xyz.ourguide.examples.simplegithubapp.BuildConfig
 import xyz.ourguide.examples.simplegithubapp.R
+import xyz.ourguide.examples.simplegithubapp.api.authApi
+import xyz.ourguide.examples.simplegithubapp.api.model.GithubAccessToken
 
 // Social Login - Github Login
 //   1. Firebase Login - Github
@@ -51,6 +58,15 @@ class SignInActivity : AppCompatActivity() {
 
     }
 
+    override fun onStop() {
+        super.onStop()
+
+        call?.cancel()
+    }
+
+    // 화면이 사라질 경우, 요청을 취소해야 한다.
+    private var call: Call<GithubAccessToken>? = null
+
     // redirect Intent에서 code를 얻어올 수 있다. - launchMode: singleTask
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
@@ -58,8 +74,7 @@ class SignInActivity : AppCompatActivity() {
         toast("onNewIntent")
         intent?.let {
             val uri = intent.data ?: throw IllegalStateException("No data exist")
-            val code = uri.getQueryParameter("code") ?:
-                    throw IllegalStateException("No code exist")
+            val code = uri.getQueryParameter("code") ?: throw IllegalStateException("No code exist")
 
             toast(code)
             // api.github.com - login 요청
@@ -67,9 +82,32 @@ class SignInActivity : AppCompatActivity() {
 
             // OKHttpClient -> 요청 -> JSON -> GithubAccessToken
             //                            Gson
+
+            call = authApi.getAccessToken(clientId = BuildConfig.GITHUB_CLIENT_ID,
+                    clientSecret = BuildConfig.GITHUB_CLIENT_SECRET,
+                    code = code)
+
+            call?.enqueue(object : Callback<GithubAccessToken> {
+                override fun onResponse(call: Call<GithubAccessToken>,
+                                        response: Response<GithubAccessToken>) {
+
+                    val token = response.body()
+                    if (response.isSuccessful && token != null) {
+
+                        Toast.makeText(this@SignInActivity, "token: ${token.accessToken}", Toast.LENGTH_SHORT).show()
+
+                    } else {
+                        // showError("Request failed: ${response.message}")
+                    }
+
+                }
+
+                override fun onFailure(call: Call<GithubAccessToken>,
+                                       t: Throwable) {
+                    // showError(t.message)
+                }
+            })
         }
-
-
     }
 
 
