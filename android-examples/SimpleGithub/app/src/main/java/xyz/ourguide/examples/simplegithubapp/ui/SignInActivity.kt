@@ -55,8 +55,16 @@ class SignInActivity : AppCompatActivity() {
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
 
-
         toast("onNewIntent")
+        intent?.let {
+            val uri = intent.data ?: throw IllegalStateException("No data exist")
+            val code = uri.getQueryParameter("code") ?:
+                    throw IllegalStateException("No code exist")
+
+            toast(code)
+            // api.github.com - login 요청
+            //  => Access Token
+        }
 
 
     }
