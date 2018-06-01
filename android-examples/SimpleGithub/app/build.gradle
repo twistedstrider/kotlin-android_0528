@@ -14,6 +14,8 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+        // BuildConfig.GITHUB_CLIENT_ID
+        // BuildConfig.GITHUB_CLIENT_SERCRET
         buildConfigField "String", "GITHUB_CLIENT_ID",
                 project.properties["GITHUB_CLIENT_ID"] ?: "\"NOT_FOUND\""
         buildConfigField "String", "GITHUB_CLIENT_SECRET",

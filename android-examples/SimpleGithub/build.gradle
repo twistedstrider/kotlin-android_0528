@@ -1,6 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+    // dependencies.gradle을 포함해야 한다.
     apply from:('dependencies.gradle')
 
     repositories {
