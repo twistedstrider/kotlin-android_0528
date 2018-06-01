@@ -34,6 +34,32 @@ class MainFragment : Fragment() {
     }
 }
 
+// RecyclerView
+//  : ListView를 대체하기 위해서 나왔다.
+//   1) 레이아웃을 변경하는 것이 어렵다.
+//     => 내부 아이템의 레이아웃에 대한 정책을 변경하는 것이 가능하다.
+//   2) 사용자가 직접 최적화를 해야 한다.
+//     => View Holder Pattern
+//     => Recycler View는 View Holder Pattern을 자동적으로 적용한다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
