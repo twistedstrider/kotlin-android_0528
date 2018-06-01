@@ -25,6 +25,7 @@ import java.util.*
 // Anko
 
 
+/*
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -101,15 +102,37 @@ class MainActivity : AppCompatActivity() {
             timer.scheduleAtFixedRate(timerTask, 0, 100)
             */
 
-            indeterminateProgressDialog("Please wait")
+            // indeterminateProgressDialog("Please wait")
+        }
+
+    }
+}
+*/
+
+
+// Activity 전환
+// 1. SubActivity.kt
+// 2. AndroidManifest.xml
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        button.setOnClickListener {
+            
         }
 
     }
 }
 
 
-
-
+class SubActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_sub)
+    }
+}
 
 
 
