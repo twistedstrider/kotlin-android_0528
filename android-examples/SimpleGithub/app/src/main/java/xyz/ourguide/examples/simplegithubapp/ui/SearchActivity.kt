@@ -21,6 +21,13 @@ import org.jetbrains.anko.toast
 import xyz.ourguide.examples.simplegithubapp.R
 import xyz.ourguide.examples.simplegithubapp.api.model.GithubRepo
 
+
+// Search Activity - Rx
+// Rx: 비동기 흐름 제어
+//   => Collection  -> map, flatMap, filter  : Stream<T>
+//      Async Event ->         "             : Observable<T>
+
+
 class SearchActivity : AppCompatActivity() {
 
     private val adapter = SearchAdapter()
