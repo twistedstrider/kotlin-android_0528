@@ -3,6 +3,7 @@ package xyz.ourguide.examples.simplegithubapp.ui
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.customtabs.CustomTabsIntent
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import org.jetbrains.anko.toast
 import xyz.ourguide.examples.simplegithubapp.BuildConfig
@@ -41,7 +42,8 @@ class SignInActivity : AppCompatActivity() {
             }.build()
 
             toast(authUri.toString())
-
+            val intent = CustomTabsIntent.Builder().build()
+            intent.launchUrl(this, authUri)
         }
 
     }
