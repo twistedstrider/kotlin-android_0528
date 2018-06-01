@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_main2.*
 import kotlinx.android.synthetic.main.item_city.view.*
+import kotlin.properties.Delegates
 
 // 1. activity_fragment.xml 추가
 // 2. MainFragment 클래스 추가
@@ -80,14 +81,17 @@ class MainFragment : Fragment() {
         cityRecyclerView.adapter = adapter
 
         adapter.cities = cities
-        adapter.notifyDataSetChanged()
+        // adapter.notifyDataSetChanged()
         // 데이터가 변경될 때마다 반드시 알려야 한다.
     }
 }
 
 // 2. Adapter 선언
 class CityAdapter : RecyclerView.Adapter<CityAdapter.Holder>() {
-    var cities: List<City> = emptyList()
+    // var cities: List<City> = emptyList()
+    var cities: List<City> by Delegates.observable(emptyList()) { _, _, _ ->
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = Holder(parent)
 
