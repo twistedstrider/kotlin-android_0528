@@ -9,6 +9,9 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_sign_in.*
+import org.jetbrains.anko.clearTask
+import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.newTask
 import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
@@ -17,6 +20,7 @@ import xyz.ourguide.examples.simplegithubapp.BuildConfig
 import xyz.ourguide.examples.simplegithubapp.R
 import xyz.ourguide.examples.simplegithubapp.api.authApi
 import xyz.ourguide.examples.simplegithubapp.api.model.GithubAccessToken
+import xyz.ourguide.examples.simplegithubapp.data.updateToken
 
 // Social Login - Github Login
 //   1. Firebase Login - Github
@@ -96,6 +100,10 @@ class SignInActivity : AppCompatActivity() {
                 val token = response.body()
                 if (response.isSuccessful && token != null) {
                     toast("token: ${token.accessToken}")
+
+                    updateToken(this, token.accessToken)
+                    launchMainActivity()
+
                 } else {
                     showError("Request failed: ${response.message()}")
                 }
@@ -132,6 +140,13 @@ class SignInActivity : AppCompatActivity() {
             })
             */
         }
+    }
+
+    private fun launchMainActivity() {
+        val intent = intentFor<MainActivity>()
+                .clearTask()
+                .newTask()
+        startActivity(intent)
     }
 
     private fun showError(message: String?) {
