@@ -89,6 +89,23 @@ class SignInActivity : AppCompatActivity() {
                     code = code)
 
             showProgress()
+
+            call?.enqueue({ response ->
+                hideProgress()
+
+                val token = response.body()
+                if (response.isSuccessful && token != null) {
+                    toast("token: ${token.accessToken}")
+                } else {
+                    showError("Request failed: ${response.message()}")
+                }
+
+            }, {
+                hideProgress()
+                showError(it.message)
+            })
+
+
             /*
             call?.enqueue(object : Callback<GithubAccessToken> {
                 override fun onResponse(call: Call<GithubAccessToken>,
