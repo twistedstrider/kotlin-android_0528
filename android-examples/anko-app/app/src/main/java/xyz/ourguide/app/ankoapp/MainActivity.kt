@@ -178,7 +178,7 @@ class MainActivityUI : AnkoComponent<MainActivity> {
                 hint = "Password"
             }
 
-            button("Submit")
+            button(text = "Submit")
         }
 
     }.view
