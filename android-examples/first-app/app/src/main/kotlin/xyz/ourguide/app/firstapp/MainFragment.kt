@@ -3,10 +3,12 @@ package xyz.ourguide.app.firstapp
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_main2.*
+import kotlinx.android.synthetic.main.item_city.view.*
 
 // 1. activity_fragment.xml 추가
 // 2. MainFragment 클래스 추가
@@ -49,7 +51,18 @@ class MainFragment : Fragment() {
 
 // Designer <=> Zeplin <=> Programmer
 
+data class City(val name: String, val code: String)
+
 class MainFragment : Fragment() {
+
+    private val cities = listOf(
+            City("Seoul", "SEO"),
+            City("Tokyo", "TOK"),
+            City("Mountain View", "MTV"),
+            City("Singapore", "SIN"),
+            City("New York", "NTC")
+    )
+
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -64,6 +77,45 @@ class MainFragment : Fragment() {
         // cityRecyclerView.adapter = CityAdapter()
     }
 }
+
+// 2. Adapter 선언
+class CityAdapter : RecyclerView.Adapter<CityAdapter.Holder>() {
+    var cities: List<City> = emptyList()
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = Holder(parent)
+
+    override fun getItemCount(): Int = cities.count()
+
+    override fun onBindViewHolder(holder: Holder, position: Int) {
+        val city = cities[position]
+
+        with(holder.itemView) {
+            cityNameText.text = city.name
+            cityCodeText.text = city.code
+        }
+
+        // holder.itemView.cityNameText.text = city.name
+        // holder.itemView.cityCodeText.text = city.code
+    }
+
+
+    // 1. Holder를 선언한다.
+    class Holder(parent: ViewGroup)
+        : RecyclerView.ViewHolder(LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_city, parent, false))
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
