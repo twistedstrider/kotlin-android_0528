@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_sub.*
+import kotlinx.android.synthetic.main.activity_sub.view.*
 import org.jetbrains.anko.*
 import org.jetbrains.anko.appcompat.v7.Appcompat
 import java.util.*
@@ -155,19 +156,32 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+        MainActivityUI().setContentView(this)
         // setContentView(R.layout.activity_main)
+
     }
 }
 
 class MainActivityUI : AnkoComponent<MainActivity> {
     override fun createView(ui: AnkoContext<MainActivity>): View = ui.apply {
-        
+        verticalLayout {
+            textView("Enter Login E-mail Address")
+            padding = dip(16)
 
+            editText {
+                hint = "E-mail"
+            }
 
+            editText {
+                hint = "Password"
+            }
+
+            button("Submit")
+        }
 
     }.view
-
-
 }
 
 
