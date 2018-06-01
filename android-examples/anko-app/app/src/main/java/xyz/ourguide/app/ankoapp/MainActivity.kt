@@ -85,6 +85,7 @@ class MainActivity : AppCompatActivity() {
             */
 
             // Progress Dialog
+            /*
             val progressDialog = progressDialog(title = "File Download", message = "Downloading")
             progressDialog.setCancelable(false)
 
@@ -98,6 +99,9 @@ class MainActivity : AppCompatActivity() {
 
             val timer = Timer()
             timer.scheduleAtFixedRate(timerTask, 0, 100)
+            */
+
+            indeterminateProgressDialog("Please wait")
         }
 
     }
