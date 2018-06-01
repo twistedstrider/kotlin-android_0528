@@ -2,16 +2,17 @@ package xyz.ourguide.app.firstapp
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.android.synthetic.main.fragment_main2.*
 
 // 1. activity_fragment.xml 추가
 // 2. MainFragment 클래스 추가
 // 3. Fragment를 Activity에 붙인다.
 
+/*
 class MainFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
@@ -32,7 +33,7 @@ class MainFragment : Fragment() {
             Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
         }
     }
-}
+}*/
 
 // RecyclerView
 //  : ListView를 대체하기 위해서 나왔다.
@@ -48,9 +49,21 @@ class MainFragment : Fragment() {
 
 // Designer <=> Zeplin <=> Programmer
 
+class MainFragment : Fragment() {
+    override fun onCreateView(inflater: LayoutInflater,
+                              container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
 
+        return inflater.inflate(R.layout.fragment_main2,
+                container,
+                false)
+    }
 
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        cityRecyclerView.layoutManager = LinearLayoutManager(activity)
+        // cityRecyclerView.adapter = CityAdapter()
+    }
+}
 
 
 
