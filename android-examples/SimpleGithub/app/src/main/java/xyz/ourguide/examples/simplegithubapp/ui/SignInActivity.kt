@@ -64,6 +64,9 @@ class SignInActivity : AppCompatActivity() {
             toast(code)
             // api.github.com - login 요청
             //  => Access Token
+
+            // OKHttpClient -> 요청 -> JSON -> GithubAccessToken
+            //                            Gson
         }
 
 
