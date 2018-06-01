@@ -32,6 +32,7 @@ dependencies {
     implementation "org.jetbrains.anko:anko-commons:0.10.5"
 
     // Anko Layouts
+    implementation "org.jetbrains.anko:anko-sdk21:0.10.5"
     implementation "org.jetbrains.anko:anko-appcompat-v7:0.10.5"
 
     testImplementation 'junit:junit:4.12'

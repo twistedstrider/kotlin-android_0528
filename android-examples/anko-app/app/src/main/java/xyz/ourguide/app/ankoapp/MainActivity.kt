@@ -5,6 +5,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
+import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_sub.*
@@ -112,6 +113,7 @@ class MainActivity : AppCompatActivity() {
 */
 
 
+/*
 // Activity 전환
 // 1. SubActivity.kt
 // 2. AndroidManifest.xml
@@ -141,6 +143,36 @@ class MainActivity : AppCompatActivity() {
 
     }
 }
+*/
+
+
+// Anko Layout
+// 1. 코드를 이용해서 View를 구성하는 것은 어렵다.
+// 2. XML로 정의된 뷰를 사용하는 경우, 파싱에 대한 비용이 소모됩니다.
+//    "성능", "배터리" => 코드를 통해 뷰를 구성할 수 있도록 하겠다.
+
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        // setContentView(R.layout.activity_main)
+    }
+}
+
+class MainActivityUI : AnkoComponent<MainActivity> {
+    override fun createView(ui: AnkoContext<MainActivity>): View = ui.apply {
+        
+
+
+
+    }.view
+
+
+}
+
+
+
+
 
 
 class SubActivity : AppCompatActivity() {
