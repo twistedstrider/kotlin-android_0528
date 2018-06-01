@@ -2,7 +2,6 @@ package xyz.ourguide.app.firstapp
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
 
 /*
 public class MainActivity extends AppCompatActivity {
@@ -46,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 //    : Shift + F6
 //    * layout 파일에서 이름을 변경하면 적용됩니다.
 
-
+/*
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +54,20 @@ class MainActivity : AppCompatActivity() {
         hiButton.setOnClickListener {
             textView.setText("Hello, Kotlin")
         }
+    }
+}
+*/
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main2)
+
+        // Fragment를 추가하는 방법
+        val fragment = MainFragment()
+        supportFragmentManager.beginTransaction()
+                .add(R.id.mainFragment, fragment)
+                .commit()
     }
 }
 

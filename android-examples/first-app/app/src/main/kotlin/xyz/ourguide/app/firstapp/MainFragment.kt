@@ -8,6 +8,7 @@ import android.view.ViewGroup
 
 // 1. activity_fragment.xml 추가
 // 2. MainFragment 클래스 추가
+// 3. Fragment를 Activity에 붙인다.
 
 class MainFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater,
@@ -21,7 +22,7 @@ class MainFragment : Fragment() {
 
     // Activity: onCreate
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        
+
     }
 }
 
