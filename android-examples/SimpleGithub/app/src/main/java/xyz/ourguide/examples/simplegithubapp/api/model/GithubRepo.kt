@@ -11,7 +11,7 @@ data class GithubRepo(val name: String,
                       val owner: GithubOwner,
                       val description: String?,
                       val language: String?,
-                      @field:SerializedName("updated_at") val updateAt: String,
+                      @field:SerializedName("updated_at") val updatedAt: String,
                       @field:SerializedName("stargazers_count") val stars: Int)
 
 data class RepoSearchResponse(@field:SerializedName("total_count") val totalCount: Int,
