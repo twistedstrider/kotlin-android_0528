@@ -44,6 +44,8 @@ class SignInActivity : AppCompatActivity() {
             toast(authUri.toString())
             val intent = CustomTabsIntent.Builder().build()
             intent.launchUrl(this, authUri)
+
+            // redirect uri: simplegithub://authorize
         }
 
     }
