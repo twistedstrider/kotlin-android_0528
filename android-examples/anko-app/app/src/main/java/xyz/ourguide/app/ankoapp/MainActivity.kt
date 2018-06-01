@@ -127,10 +127,16 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             */
 
+            /*
             startActivity<SubActivity>(
                     "name" to "Tom",
                     "age" to 42)
+            */
+            val intent = intentFor<SubActivity>(
+                    "name" to "Tom",
+                    "age" to 42).clearTop()
 
+            startActivity(intent)
         }
 
     }
@@ -142,10 +148,18 @@ class SubActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sub)
 
-        val name = intent.getStringExtra("name")
-        val age = intent.getIntExtra("age", 0)
-
+        /*
+        val name = intent?.getStringExtra("name") ?: "Unnamed"
+        val age = intent?.getIntExtra("age") ?: 0
         textView.text = "$name($age)"
+        */
+
+        intent?.let {
+            val name = it.getStringExtra("name")
+            val age = it.getIntExtra("age", 0)
+
+            textView.text = "$name($age)"
+        }
     }
 }
 
