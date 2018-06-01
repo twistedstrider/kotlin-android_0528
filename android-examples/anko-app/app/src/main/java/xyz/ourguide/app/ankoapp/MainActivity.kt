@@ -6,9 +6,9 @@ import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
-import org.jetbrains.anko.alert
-import org.jetbrains.anko.longToast
-import org.jetbrains.anko.toast
+import org.jetbrains.anko.*
+import org.jetbrains.anko.appcompat.v7.Appcompat
+import java.util.*
 
 // Anko
 //  : Jetbrains 직접 제작하여 배포하는 코틀린 라이브러리
@@ -53,6 +53,7 @@ class MainActivity : AppCompatActivity() {
             dialog.show()
             */
 
+            /*
             alert(title="Dialog Title", message = "Dialog Message") {
                 positiveButton("Yes") {
                     toast("Yes")
@@ -61,8 +62,42 @@ class MainActivity : AppCompatActivity() {
                     toast("No")
                 }
             }.show()
+            */
 
+            // Appcompat: Support Library Dialog 생성하는 Anko Dialog 코드
+            /*
+            alert(Appcompat, title="Dialog Title", message = "Dialog Message") {
+                positiveButton("Yes") {
+                    toast("Yes")
+                }
+                negativeButton("No") {
+                    toast("No")
+                }
+            }.show()
+            */
 
+            /*
+            // Selector Dialog도 만들 수 있습니다.
+            val names = listOf("Tom", "Bob", "Alice")
+            selector(title = "Select User", items = names) { _, index ->
+                toast("Selected name - ${names[index]}")
+            }
+            */
+
+            // Progress Dialog
+            val progressDialog = progressDialog(title = "File Download", message = "Downloading")
+            progressDialog.setCancelable(false)
+
+            val timerTask = object : TimerTask() {
+                override fun run() {
+                    progressDialog.progress += 10
+                    if (progressDialog.progress >= 100)
+                        progressDialog.dismiss()
+                }
+            }
+
+            val timer = Timer()
+            timer.scheduleAtFixedRate(timerTask, 0, 100)
         }
 
     }
