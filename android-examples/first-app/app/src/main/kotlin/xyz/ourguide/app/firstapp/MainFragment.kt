@@ -74,7 +74,14 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         cityRecyclerView.layoutManager = LinearLayoutManager(activity)
-        // cityRecyclerView.adapter = CityAdapter()
+
+
+        val adapter = CityAdapter()
+        cityRecyclerView.adapter = adapter
+
+        adapter.cities = cities
+        adapter.notifyDataSetChanged()
+        // 데이터가 변경될 때마다 반드시 알려야 한다.
     }
 }
 
