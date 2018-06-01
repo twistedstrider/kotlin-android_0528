@@ -1,0 +1,8 @@
+// Version을 관리하는 별도의 파일
+ext {
+    kotlin_version = '1.2.41'
+    minSdkVersion = 19
+    targetSdkVersion = 27
+
+    androidPluginVersion = '3.1.2'
+}
