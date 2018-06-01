@@ -36,6 +36,7 @@ class SignInActivity : AppCompatActivity() {
                 authority("github.com")
                 appendPath("login")
                 appendPath("oauth")
+                appendPath("authorize")
                 appendQueryParameter("client_id", BuildConfig.GITHUB_CLIENT_ID)
             }.build()
 
