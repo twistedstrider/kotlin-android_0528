@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.alert
 import org.jetbrains.anko.longToast
 import org.jetbrains.anko.toast
 
@@ -38,6 +39,7 @@ class MainActivity : AppCompatActivity() {
             // longToast("Toast!")
 
             // 2. AlertDialog
+            /*
             val dialog = AlertDialog.Builder(this)
                     .setTitle("Dialog Title")
                     .setMessage("Dialog Message")
@@ -49,6 +51,17 @@ class MainActivity : AppCompatActivity() {
                     }
                     .create()
             dialog.show()
+            */
+
+            alert(title="Dialog Title", message = "Dialog Message") {
+                positiveButton("Yes") {
+                    toast("Yes")
+                }
+                negativeButton("No") {
+                    toast("No")
+                }
+            }.show()
+
 
         }
 
