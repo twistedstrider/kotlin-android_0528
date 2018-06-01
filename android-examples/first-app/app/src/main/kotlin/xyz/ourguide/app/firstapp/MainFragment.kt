@@ -42,10 +42,11 @@ class MainFragment : Fragment() {
 //     => View Holder Pattern
 //     => Recycler View는 View Holder Pattern을 자동적으로 적용한다.
 
+// Designer
+//   1) Sketch
+//   2) Adobe XD
 
-
-
-
+// Designer <=> Zeplin <=> Programmer
 
 
 
