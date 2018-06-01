@@ -1,11 +1,13 @@
 package xyz.ourguide.app.ankoapp
 
 import android.content.DialogInterface
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_sub.*
 import org.jetbrains.anko.*
 import org.jetbrains.anko.appcompat.v7.Appcompat
 import java.util.*
@@ -120,7 +122,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         button.setOnClickListener {
-            
+            /*
+            val intent = Intent(this, SubActivity::class.java)
+            startActivity(intent)
+            */
+
+            startActivity<SubActivity>(
+                    "name" to "Tom",
+                    "age" to 42)
+
         }
 
     }
@@ -131,6 +141,11 @@ class SubActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sub)
+
+        val name = intent.getStringExtra("name")
+        val age = intent.getIntExtra("age", 0)
+
+        textView.text = "$name($age)"
     }
 }
 
